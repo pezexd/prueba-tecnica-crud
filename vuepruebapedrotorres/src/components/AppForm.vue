@@ -35,31 +35,31 @@
 					<label for="nombre_act" class="text-lg font-semibold">
 						NOMBRE ACTIVIDAD *
 					</label>
-					<input v-model="formModel.activity_name" id="nombre_act" type="text" placeholder="Hora de Inicio" class="app-input">
+					<input v-model="formModel.activity_name" id="nombre_act" type="text" placeholder="Hora de Inicio" class="app-input" required>
 				</div>
 				<div class="flex flex-col">
 					<label for="fecha" class="text-lg font-semibold">
 						FECHA *
 					</label>
-					<input v-model="formModel.activity_date" id="fecha" type="date" placeholder="Fecha del dia" class="app-input">
+					<input v-model="formModel.activity_date" id="fecha" type="date" placeholder="Fecha del dia" class="app-input" required>
 				</div>
 				<div class="flex flex-col">
 					<label for="hora_inicio" class="text-lg font-semibold">
 						HORA INICIO *
 					</label>
-					<input v-model="formModel.start_time" id="hora_inicio" type="time" placeholder="Hora de Inicio" class="app-input">
+					<input v-model="formModel.start_time" id="hora_inicio" type="time" placeholder="Hora de Inicio" class="app-input" required>
 				</div>
 				<div class="flex flex-col">
 					<label for="hora_final" class="text-lg font-semibold">
 						HORA FINAL *
 					</label>
-					<input v-model="formModel.final_hour" :min="formModel.start_time" id="hora_final" type="time" placeholder="Hora Final" class="app-input">
+					<input v-model="formModel.final_hour" :min="formModel.start_time" id="hora_final" type="time" placeholder="Hora Final" class="app-input" required>
 				</div>
 				<div class="flex flex-col">
 					<label for="derechos_culturales" class="text-lg font-semibold">
 						Derechos culturales *
 					</label>
-					<select v-model="formModel.cultural_right_id" id="derechos_culturales" type="text" placeholder="Seleccione" class="app-input">
+					<select v-model="formModel.cultural_right_id" id="derechos_culturales" type="text" placeholder="Seleccione" class="app-input" required>
 						<option value="" disabled>
 							Seleccione
 						</option>
@@ -85,7 +85,7 @@
 					<label for="experticia" class="text-lg font-semibold">
 						EXPERTICIA *
 					</label>
-					<select v-model="formModel.expertise_id"  id="experticia" type="text" class="app-input">
+					<select v-model="formModel.expertise_id"  id="experticia" type="text" class="app-input" required>
 						<option value="" disabled>
 							Seleccione
 						</option>

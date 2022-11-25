@@ -6,6 +6,12 @@
     const exampleTable = ref<HTMLElement | string>("")
     const tabulator = ref()
 
+	const dateFormat = (date: string): Date => {
+		const dateTransform = new Date(date)
+
+		return dateTransform.toLocaleString("es-ES") as unknown as Date
+	}
+
     const tabledata: dataT[] = [
         {
             id: 1,
@@ -13,11 +19,11 @@
             "monitor_id": "KAREM LOPEZ",
             "cultural_right_id": "Acceso y participación en la vida cultural",
             "nac_id": "Restrepo",
-            "activity_date": new Date("2022-09-05"),
+            "activity_date": dateFormat("2022-09-05"),
             "start_time": "10:00",
             "final_hour": "11:00",
             "expertise_id": "Danza",
-            "fecha_db": new Date("2022-09-05"),
+            "fecha_db": dateFormat("2022-09-05"),
             "state": "Aprobado"
         },
         {
@@ -26,11 +32,11 @@
             "monitor_id": "KAREM LOPEZ",
             "cultural_right_id": "Acceso y participación en la vida cultural",
             "nac_id": "Restrepo",
-            "activity_date": new Date("2022-09-05"),
+            "activity_date": dateFormat("2022-09-05"),
             "start_time": "10:00",
             "final_hour": "11:00",
             "expertise_id": "Danza",
-            "fecha_db": new Date("2022-09-05"),
+            "fecha_db": dateFormat("2022-09-05"),
             "state": "Aprobado"
         },
         {
@@ -39,11 +45,11 @@
             "monitor_id": "KAREM LOPEZ",
             "cultural_right_id": "Acceso y participación en la vida cultural",
             "nac_id": "Restrepo",
-            "activity_date": new Date("2022-09-05"),
+            "activity_date": dateFormat("2022-09-05"),
             "start_time": "10:00",
             "final_hour": "11:00",
             "expertise_id": "Danza",
-            "fecha_db": new Date("2022-09-05"),
+            "fecha_db": dateFormat("2022-09-05"),
             "state": "Aprobado"
         },
         {
@@ -52,11 +58,11 @@
             "monitor_id": "KAREM LOPEZ",
             "cultural_right_id": "Acceso y participación en la vida cultural",
             "nac_id": "Restrepo",
-            "activity_date": new Date("2022-09-05"),
+            "activity_date": dateFormat("2022-09-05"),
             "start_time": "10:00",
             "final_hour": "11:00",
             "expertise_id": "Danza",
-            "fecha_db": new Date("2022-09-05"),
+            "fecha_db": dateFormat("2022-09-05"),
             "state": "Aprobado"
         },
     ];
@@ -81,6 +87,17 @@
             layout:"fitData",
         })
     })
+
+	const filters = reactive({
+		search: "",
+		cultural_filter: "",
+		nacs_filter: "",
+		expertises_filter: "",
+		date_range: "",
+		date_range2: "",
+		state: "",
+		entrys: ""
+	})
 </script>
 
 <template>
@@ -108,7 +125,7 @@
 								<span class="absolute inset-y-0 right-0 flex items-center pr-2">
 									<icon:carbon:search class="w-5 h-5" />
 								</span>
-								<input id="search" type="text" class="py-1 px-2 md:max-w-[107px] text-sm border-2 border-black outline-none rounded w-auto">
+								<input v-model="filters.search" id="search" type="text" class="py-1 px-2 md:max-w-[107px] text-sm border-2 border-black outline-none rounded w-auto">
 							</div>
 						</div>
 					</div>
@@ -117,7 +134,7 @@
 							<span class="absolute inset-y-0 right-0 flex items-center px-0.5 border-2 border-black bg-stone-300 pointer-events-none">
 								<icon:carbon:caret-down />
 							</span>
-							<select id="cultural_filter" class="w-full pr-2 text-sm border-2 border-black outline-none">
+							<select v-model="filters.cultural_filter" id="cultural_filter" class="w-full pr-2 text-sm border-2 border-black outline-none">
 								<option value="" disabled>
 									Derecho cultural
 								</option>
@@ -130,7 +147,7 @@
 							<span class="absolute inset-y-0 right-0 flex items-center px-0.5 border-2 border-black bg-stone-300 pointer-events-none">
 								<icon:carbon:caret-down />
 							</span>
-							<select id="nacs_filter" class="w-full pr-2 text-sm border-2 border-black outline-none">
+							<select v-model="filters.nacs_filter" id="nacs_filter" class="w-full pr-2 text-sm border-2 border-black outline-none">
 								<option value="" disabled>
 									Nac
 								</option>
@@ -143,7 +160,7 @@
 							<span class="absolute inset-y-0 right-0 flex items-center px-0.5 border-2 border-black bg-stone-300 pointer-events-none">
 								<icon:carbon:caret-down />
 							</span>
-							<select id="expertises_filter" class="w-full pr-2 text-sm border-2 border-black outline-none">
+							<select v-model="filters.expertises_filter" id="expertises_filter" class="w-full pr-2 text-sm border-2 border-black outline-none">
 								<option value="" disabled>
 									Experticia
 								</option>
@@ -162,13 +179,13 @@
 						<span class="absolute inset-y-0 right-0 flex items-center px-1 rounded-r bg-white border-2 border-black pointer-events-none">
 							<icon:carbon:calendar />
 						</span>
-						<input id="date_range" type="date" class="py-1 px-2 text-sm border-2 border-black outline-none rounded w-auto">
+						<input v-model="filters.date_range" id="date_range" type="date" class="py-1 px-2 text-sm border-2 border-black outline-none rounded w-auto">
 					</div>
 					<div class="relative block">
 						<span class="absolute inset-y-0 right-0 flex items-center px-1 rounded-r bg-white border-2 border-black pointer-events-none">
 							<icon:carbon:calendar />
 						</span>
-						<input id="date_range2" type="date" class="py-1 px-2 text-sm border-2 border-black outline-none rounded w-auto">
+						<input v-model="filters.date_range2" id="date_range2" type="date" class="py-1 px-2 text-sm border-2 border-black outline-none rounded w-auto">
 					</div>
 				</div>
 			</div>
@@ -179,7 +196,7 @@
 							<span class="absolute inset-y-0 right-0 flex items-center px-0.5 border-2 border-black bg-stone-300 pointer-events-none">
 								<icon:carbon:caret-down />
 							</span>
-							<select id="state" class="pr-2 max-w-[107px] text-sm border-2 border-black outline-none w-auto">
+							<select v-model="filters.state" id="state" class="pr-2 max-w-[107px] text-sm border-2 border-black outline-none w-auto">
 								<option value="" disabled>
 									Estado
 								</option>
@@ -203,8 +220,8 @@
 							<span class="absolute inset-y-0 right-0 flex items-center px-0.5 border-2 border-black bg-stone-300 pointer-events-none">
 								<icon:carbon:caret-down />
 							</span>
-							<select id="entrys" class="pr-2 max-w-[107px] text-sm border-2 border-black outline-none w-auto">
-								<option value="10" disabled>
+							<select v-model="filters.entrys" id="entrys" class="pr-2 max-w-[107px] text-sm border-2 border-black outline-none w-auto">
+								<option value="10">
 									10
 								</option>
 								<option value="20">
