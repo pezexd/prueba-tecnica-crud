@@ -59,7 +59,7 @@
 					<label for="derechos_culturales" class="text-lg font-semibold">
 						Derechos culturales *
 					</label>
-					<select v-model="formModel.cultural_right_id" id="derechos_culturales" type="text" placeholder="Seleccione" class="app-input" required>
+					<select v-model="formModel.cultural_right_id" id="derechos_culturales" placeholder="Seleccione" class="app-input" required>
 						<option value="" disabled>
 							Seleccione
 						</option>
@@ -72,7 +72,7 @@
 					<label for="nac" class="text-lg font-semibold">
 						NAC
 					</label>
-					<select v-model="formModel.nac" id="nac" type="text" class="app-input">
+					<select v-model="formModel.nac" id="nac" class="app-input">
 						<option value="" disabled>
 							Seleccione
 						</option>
@@ -85,7 +85,7 @@
 					<label for="experticia" class="text-lg font-semibold">
 						EXPERTICIA *
 					</label>
-					<select v-model="formModel.expertise_id"  id="experticia" type="text" class="app-input" required>
+					<select v-model="formModel.expertise_id" id="experticia" class="app-input" required>
 						<option value="" disabled>
 							Seleccione
 						</option>

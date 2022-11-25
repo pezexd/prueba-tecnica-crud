@@ -42,7 +42,8 @@
 		"vue-i18n": "^9.1.10",
 		"vue-router": "^4.1.2",
 		"workbox": "^0.0.0",
-		"workbox-window": "^6.5.3"
+		"workbox-window": "^6.5.3",
+		"xlsx": "https://cdn.sheetjs.com/xlsx-0.19.1/xlsx-0.19.1.tgz"
 	},
 	"devDependencies": {
 		"@iconify/json": "^2.1.78",

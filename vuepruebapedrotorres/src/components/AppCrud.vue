@@ -98,6 +98,16 @@
 		state: "",
 		entrys: ""
 	})
+
+	function downloadPDF(){
+		tabulator.value.download("pdf", "data.pdf", {
+			orientation: "portrait",
+			title: "Reporte"
+		})
+	}
+	function downloadXLSX(){
+		tabulator.value.download("xlsx", "data.xlsx")
+	}
 </script>
 
 <template>
@@ -235,14 +245,14 @@
 					</div>
 				</div>
 				<div class="grid grid-cols-2 gap-4 md:gap-1">
-					<button class="flex gap-1 justify-between items-center px-2 py-1 outline-none border-2 border-black rounded text-sm font-semibold bg-emerald-400">
+					<button @click="downloadPDF" class="flex gap-1 justify-between items-center px-2 py-1 outline-none border-2 border-black rounded text-sm font-semibold bg-emerald-400">
 						<span>
 							Exportar PDF
 						</span>
 						<icon:carbon:generate-pdf />
 					</button>
-					<button class="flex gap-1 justify-between items-center px-2 py-1 outline-none border-2 border-black rounded text-sm font-semibold bg-emerald-400">
-						Exportar XLS
+					<button @click="downloadXLSX" class="flex gap-1 justify-between items-center px-2 py-1 outline-none border-2 border-black rounded text-sm font-semibold bg-emerald-400">
+						Exportar XLSX
 						<icon:carbon:download />
 					</button>
 				</div>

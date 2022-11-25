@@ -39,6 +39,7 @@ specifiers:
   vue-tsc: ^0.38.5
   workbox: ^0.0.0
   workbox-window: ^6.5.3
+  xlsx: https://cdn.sheetjs.com/xlsx-0.19.1/xlsx-0.19.1.tgz
 
 dependencies:
   '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@3.1.6
@@ -58,6 +59,7 @@ dependencies:
   vue-router: 4.1.2_vue@3.2.37
   workbox: 0.0.0
   workbox-window: 6.5.3
+  xlsx: '@cdn.sheetjs.com/xlsx-0.19.1/xlsx-0.19.1.tgz'
 
 devDependencies:
   '@iconify/json': 2.1.78
@@ -5366,3 +5368,11 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  '@cdn.sheetjs.com/xlsx-0.19.1/xlsx-0.19.1.tgz':
+    resolution: {tarball: https://cdn.sheetjs.com/xlsx-0.19.1/xlsx-0.19.1.tgz}
+    name: xlsx
+    version: 0.19.1
+    engines: {node: '>=0.8'}
+    hasBin: true
+    dev: false
